@@ -101,12 +101,15 @@ input {
   margin-top: 40px;
 }
 
-.all-queries {
+.all-queries, .all-stats {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   flex-wrap: wrap;
+}
+
+.all-queries {
   padding-bottom: 150px;
+  justify-content: center;
 }
 
 .upload-energy-CSV {
@@ -120,4 +123,25 @@ input {
   'wght' 400,
   'GRAD' 0,
   'opsz' 24
+}
+
+.stats {
+  border-radius: 10px;
+  padding: 20px;
+  margin-right: 20px;
+  min-width: 150px;
+  margin-top: 20px;
+}
+
+#all-stats {
+  justify-content: left;
+  text-align: left;
+}
+
+#location-stat {
+  background-color: rgb(220, 255, 220)
+}
+
+#weather-stat {
+  background-color: rgb(228, 242, 253);
 }
