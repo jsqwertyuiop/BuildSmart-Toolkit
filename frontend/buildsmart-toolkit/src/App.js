@@ -1,8 +1,8 @@
 import './App.css';
-import { HeaderSection } from "./components/Header.js";
-import { Query } from "./components/Query.js";
-import { PredictQuery } from "./components/PredictQuery.js";
 import Helmet from "react-helmet";
+import { BrowserRouter, Route, Link, Routes } from 'react-router-dom';
+import { ResultDay, ResultWeek } from "./Result.js"
+import { Home } from "./Home.js"
 
 function App() {
   return (
@@ -13,9 +13,13 @@ function App() {
         <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
       </Helmet>
-      <HeaderSection />
-      <Query />
-      <PredictQuery />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/predict-day" element={<ResultDay />} />
+          <Route path="/predict-week" element={<ResultWeek />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,8 +1,11 @@
 import axios from 'axios';
 import {React, useState} from 'react';
+import { Link } from 'react-router-dom';
 
 export function Query(props) {
     const [energyCSV, setEnergyCSV] = useState(null);
+    const [city, setCity] = useState("city");
+    const [state, setState] = useState("state");
 
     const handleEnergyCSV = (e) => {
         setEnergyCSV(e.target.files[0]);
@@ -16,6 +19,15 @@ export function Query(props) {
         }).catch(error => {
             alert(`File upload failed: ${error.message}`);
         });
+    }
+
+    const handleCity = (e) => {
+      setCity(e.target.value)
+      console.log("CITY SET TO: " + city)
+    }
+
+    const handleState = (e) => {
+      setState(e.target.value)
     }
 
     return (
@@ -41,11 +53,19 @@ export function Query(props) {
               <h2>Location</h2>
               <p>We need your location to access weather forecasts, which may affect future energy usage.</p>
               <div className="buttons">
-                <input type="text" name="City" placeholder="City"/><br />
-                <input type="text" name="State" placeholder="State"/><br />
+                <input type="text" name="City" placeholder="City" onChange={handleCity}/><br />
+                <input type="text" name="State" placeholder="State"  onChange={handleState}/><br />
               </div>
             </div>
           </div>        
+        </div>
+
+        <div className="footer">
+          <h2>How far do you want to predict?</h2>
+          <div className="buttons">
+            <Link to={"/predict-day"} state={{city, state}} className="predict-button">1 Day</Link>
+            <Link to={"/predict-week"} state={{city, state}} className="predict-button">1 Week</Link>
+          </div>
         </div>
       </div>
     );
