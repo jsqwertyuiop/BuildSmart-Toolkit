@@ -2,10 +2,27 @@ import './App.css';
 import { HeaderSection } from "./components/Header.js";
 import Helmet from "react-helmet";
 import { useLocation } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export function ResultDay() {
 
   const location = useLocation();
+  const [updatedGPTResponse, setUpdatedGPTResponse] = useState(null)
+
+  useEffect(() => {
+    
+    setUpdatedGPTResponse(location.state.Response)
+    console.log("response received")
+    console.log("from the result page: " + location.state.Response)
+
+  }, [location.state]);
+
+  // const weatherResponse = axios.post('http://127.0.0.1:5000/forecasts', {location: location.state.location}, {withCredentials: true}).then(response => {
+  //     console.log(`Weather uploaded successfully: ${weatherResponse}`);
+  // }).catch(error => {
+  //     alert(`File upload failed: ${error.message}`);
+  // });
 
   return (
     <div>
@@ -27,11 +44,18 @@ export function ResultDay() {
             </div>
             <div className="stats" id="weather-stat">
               <h3>Weather Tomorrow</h3>
-              <h1>74°F</h1>
+              <p>{location.state.weather[0]}</p>
             </div>
           </div>
           <div className="chatgpt-answer">
-            <p>Hi there! this is chatgpt and i dont know the answer</p>
+              {
+                updatedGPTResponse && updatedGPTResponse.split('\n').map((line, index) => (
+                  <p>
+                    {line}
+                  </p>
+                ))
+              }
+            {/* <p>{updatedGPTResponse}</p> */}
           </div>
         </div>
       </div>
@@ -42,6 +66,15 @@ export function ResultDay() {
 export function ResultWeek() {
 
     const location = useLocation();
+    const [updatedGPTResponse, setUpdatedGPTResponse] = useState(null)
+
+    useEffect(() => {
+      
+      setUpdatedGPTResponse(location.state.Response)
+      console.log("response received")
+      console.log("from the result page: " + location.state.Response)
+
+    }, [location.state]);
 
     return (
       <div>
@@ -62,13 +95,11 @@ export function ResultWeek() {
                 </div>
                 <div className="stats" id="weather-stat">
                 <h3>Weather Tomorrow</h3>
-                <h1>74°F</h1>
+                <p>{location.state.weather[0]}</p>
             </div>
           </div>
           <div className="chatgpt-answer">
-            <p>By providing us with your energy usage and location, 
-                we can help you predict your future energy usage and provide strategies to help you save money
-                while helping the environment.</p>
+            <p>{location.state.chatgptResponse}</p>
           </div>
         </div>
       </div>

@@ -99,24 +99,24 @@ if __name__ == "__main__": #if run from terminal
     
 
     # # Engineer Prompt - Prediction time, past energy data, weather data,
-    # # prompt = f"""You are an energy predictor trying to predict and minimize energy usage of a residential building given hourly or daily energy consumption data in kWhs, as well as the location of the building. You will be predicting energy usage for either the following day or week. Based on the provided data and the prediction, you will identify potential flaws in the energy usage and provide potential solutions to conserve energy. Afterwards, using the weather data associated with the location, you will determine the optimal energy usage when taking into consideration costs and comfortability.
+    # prompt = f"""You are an energy predictor trying to predict and minimize energy usage of a residential building given hourly or daily energy consumption data in kWhs, as well as the location of the building. You will be predicting energy usage for either the following day or week. Based on the provided data and the prediction, you will identify potential flaws in the energy usage and provide potential solutions to conserve energy. Afterwards, using the weather data associated with the location, you will determine the optimal energy usage when taking into consideration costs and comfortability.
     
-    # #Given the recent energy data provided and weather data for the upcoming {predict_time}, generate a prediction for energy consumption for this residential building for the upcoming {predict_time}
+    # Given the recent energy data provided and weather data for the upcoming {predict_time}, generate a prediction for energy consumption for this residential building for the upcoming {predict_time}
 
-    # # Here is the energy data in CSV format:
+    # Here is the energy data in CSV format:
 
-    # # {csv_as_text}
+    # {csv_as_text}
 
-    # # Here is the weather data for the location of the residential building for the next {predict_time}
+    # Here is the weather data for the location of the residential building for the next {predict_time}
 
-    # # {weather_data}
+    # {weather_data}
 
-    # # Please output the generated prediction in the format of a csv file.
+    # Please output the generated prediction in the format of a csv file.
     
-    # # Afterwards, analyze the energy data provided previously and identify any irregularities or inefficiencies in the energy consumption.
+    # Afterwards, analyze the energy data provided previously and identify any irregularities or inefficiencies in the energy consumption.
 
-    # # Then, provide recommendations to optimize energy usage based on the prediction, and take into account the weather forecast for personalized recommendations.
-    # # """
+    # Then, provide recommendations to optimize energy usage based on the prediction, and take into account the weather forecast for personalized recommendations.
+    # """
 
     # prompt = f"""Given the recent energy data provided, generate a prediction for energy consumption for this residential building for the upcoming day
 
