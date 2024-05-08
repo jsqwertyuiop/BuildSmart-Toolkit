@@ -92,7 +92,9 @@ def chatbot_response():
 
 def chat_with_chatGPT(prompt):
     model = "gpt-4-turbo"
-    openai.api_key = "sk-proj-zfZq8suoT0gfsWt4LakVT3BlbkFJP6VmY4fLs0p3KeOrKZoD"
+    openai.api_key = os.environ.get("OPENAI_API_KEY")
+    if openai.api_key is None:
+        raise ValueError("API key is not set")
     response = openai.chat.completions.create(
         model=model,
         messages=[{'role': 'user', "content": prompt}],
@@ -101,12 +103,6 @@ def chat_with_chatGPT(prompt):
     #retrieves choices list, and gets first choice (as usually only one choice is generated)
     #then we specify the response type, which is text
     output = response.choices[0].message.content
-    if (model == "gpt-3.5-turbo"):
-        print("Output tokens used: ", math.ceil(len(output)/3.75))
-        print("Output cost (cents): ", math.ceil(len(output)/3.75)/1000000 * 150)
-    elif (model == "gpt-4-turbo"):
-        print("Output tokens used: ", math.ceil(len(output)/3.75))
-        print("Output cost (cents): ", math.ceil(len(output)/3.75)/1000000 * 3000)
     return output
 
 def get_coords(location): #returns latitude and longitude of city, state for weather API
