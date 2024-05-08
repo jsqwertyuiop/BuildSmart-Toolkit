@@ -29,6 +29,12 @@ pip install <package-name>  # or use pip3 if pip is not configured for Python 3
 
 Example CSV files for testing can be found in './backend/uploads'
 
+To set up ChatGPT API key, please perform these steps:
+
+If on a Unix-based system: export OPENAI_API_KEY='your_api_key'
+If on a Windows system: set OPENAI_API_KEY=your_api_key
+If you prefer not to set environment variables: go into './backend/app.py' and set openai.api_key = 'your_api_key'
+
 #### Frontend Setup
 
 Navigate to the frontend directory and start the app:
